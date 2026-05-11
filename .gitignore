@@ -1,0 +1,8 @@
+.DS_Store
+*.docx
+*.pdf
+~$*
+LD4/
+TaskFlow_LD4_*/
+Deployment_Migration_Plan.*
+TaskFlow_System_Documentation.*
