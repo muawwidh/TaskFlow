@@ -10,9 +10,7 @@ CREATE DATABASE IF NOT EXISTS taskflow_db
 
 USE taskflow_db;
 
--- --------------------------------------------------------
 -- Table: users
--- --------------------------------------------------------
 CREATE TABLE IF NOT EXISTS users (
     id          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name        VARCHAR(100)        NOT NULL,
@@ -26,9 +24,7 @@ CREATE TABLE IF NOT EXISTS users (
     INDEX idx_email (email)
 ) ENGINE=InnoDB;
 
--- --------------------------------------------------------
 -- Table: teams
--- --------------------------------------------------------
 CREATE TABLE IF NOT EXISTS teams (
     id          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name        VARCHAR(100)        NOT NULL,
@@ -43,9 +39,8 @@ CREATE TABLE IF NOT EXISTS teams (
     INDEX idx_owner (owner_id)
 ) ENGINE=InnoDB;
 
--- --------------------------------------------------------
 -- Table: team_members
--- --------------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS team_members (
     id          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     team_id     INT UNSIGNED        NOT NULL,
@@ -59,9 +54,8 @@ CREATE TABLE IF NOT EXISTS team_members (
     INDEX idx_user (user_id)
 ) ENGINE=InnoDB;
 
--- --------------------------------------------------------
 -- Table: tasks
--- --------------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS tasks (
     id          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     title       VARCHAR(200)        NOT NULL,
@@ -83,9 +77,8 @@ CREATE TABLE IF NOT EXISTS tasks (
     INDEX idx_due    (due_date)
 ) ENGINE=InnoDB;
 
--- --------------------------------------------------------
 -- Table: task_comments  (bonus feature)
--- --------------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS task_comments (
     id          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     task_id     INT UNSIGNED        NOT NULL,
@@ -97,9 +90,8 @@ CREATE TABLE IF NOT EXISTS task_comments (
     INDEX idx_task (task_id)
 ) ENGINE=InnoDB;
 
--- --------------------------------------------------------
 -- Table: notifications
--- --------------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS notifications (
     id          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id     INT UNSIGNED        NOT NULL,
@@ -149,9 +141,7 @@ CREATE TABLE IF NOT EXISTS external_resources (
     INDEX idx_user_created (user_id, created_at)
 ) ENGINE=InnoDB;
 
--- --------------------------------------------------------
 -- Seed: demo data
--- --------------------------------------------------------
 -- Password for all demo users is: Password1!
 INSERT IGNORE INTO users (name, email, password, avatar, bio) VALUES
 ('Alice Chen',   'alice@demo.com',   '$2y$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewWBZuLHOyBJLO7y', '👩', 'Full-stack dev & team lead'),
